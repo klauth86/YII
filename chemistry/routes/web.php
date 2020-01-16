@@ -11,6 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'WelcomeController@index');
+
+Route::get('events', 'EventsController@index'); 
+
+Route::get('eventswitharray/{id}', 'EventsController@showwitharray')->name('events.showwitharray');
+
+Route::get('events/{id}', 'EventsController@show')->name('events.show');
+
+Route::get(
+	'events/category/{category}/{subcategory?}',
+	'EventsController@category'
+);
