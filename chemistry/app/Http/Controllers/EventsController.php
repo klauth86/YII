@@ -14,7 +14,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-		$events = Event::all();
+		$events = Event::simplePaginate(1);
 		return view('events.index')->with('events', $events);
     }
 
@@ -47,7 +47,8 @@ class EventsController extends Controller
      */
     public function show($id)
     {
-        //
+		$event = Event::findOrFail($id);
+		return view('events.show')->with('event', $event);
     }
 
     /**

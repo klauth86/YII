@@ -5,9 +5,12 @@
 
 <ul>
 @forelse ($events as $event)
-<li>{{ $event->name }}</li>
+<li>{{ $event->description }}</li>
 @empty
 <li>No events found!</li>
 @endforelse
 </ul>
+
+{!! $events->links() !!}
+
 @endsection
