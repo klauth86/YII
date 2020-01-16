@@ -25,7 +25,7 @@ class EventsController extends Controller
      */
     public function create()
     {
-        //
+		return view('events.create');
     }
 
     /**
@@ -33,10 +33,19 @@ class EventsController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+	 * $request->input()
      */
     public function store(Request $request)
     {
-        //
+		$event = new Event;
+		$event->description = $request->post('description');
+		$event->start_date = $request->post('start_date');
+		$event->end_date = $request->post('end_date');
+		$event->is_active = $request->post('is_active');
+		$event->save();
+
+		flash('Event created!')->success();
+		return redirect()->route('events.show')->with('event', $event);
     }
 
     /**
