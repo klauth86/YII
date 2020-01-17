@@ -20,7 +20,7 @@ class CreateAccountsTable extends Migration
 			$table->string('patronymic', 127);
 			$table->string('surname', 127);
 			
-			$table->string('description', 127)->nullable;
+			$table->string('description', 127)->nullable();
 			
 			$table->primary('facebook_login');
         });
