@@ -17,6 +17,7 @@ class CreatePositionsTable extends Migration
             $table->tinyIncrements('id');
 			$table->string('description', 127);
 			$table->unsignedTinyInteger('order')->default(0);
+			$table->boolean('is_active')->default(true);
         });
     }
 

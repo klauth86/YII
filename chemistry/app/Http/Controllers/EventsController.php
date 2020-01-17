@@ -14,7 +14,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-		$events = Event::simplePaginate(10);
+		$events = Event::where('is_active', 1)->simplePaginate(10);
 		return view('events.index')->with('events', $events);
     }
 
@@ -41,7 +41,6 @@ class EventsController extends Controller
 		$event->description = $request->post('description');
 		$event->start_date = $request->post('start_date');
 		$event->end_date = $request->post('end_date');
-		$event->is_active = $request->has('is_active');
 		$event->save();
 
 		return redirect()->route('events.index');
@@ -84,8 +83,7 @@ class EventsController extends Controller
 		$event->update([
 		'description' => $request->post('description'),
 		'start_date' => $request->post('start_date'),
-		'end_date' => $request->post('end_date'),
-		'is_active' => $request->has('is_active')]);		
+		'end_date' => $request->post('end_date')]);	
 		return redirect()->route('events.index');
     }
 
@@ -99,7 +97,7 @@ class EventsController extends Controller
     public function destroy($id)
     {
 		$event = Event::findOrFail($id);
-		$event->delete();
+		$event->update(['is_active' => false]);	
 		return redirect()->route('events.index');
     }
 }

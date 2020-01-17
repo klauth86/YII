@@ -11,5 +11,5 @@ class Position extends Model
 	
 	public $timestamps = false;
 	
-	protected $fillable = ['description', 'order'];
+	protected $fillable = ['description', 'order', 'is_active'];
 }

@@ -14,7 +14,7 @@ class PositionsController extends Controller
      */
     public function index()
     {
-		$positions = Position::simplePaginate(10);
+		$positions = Position::where('is_active', 1)->simplePaginate(10);
 		return view('positions.index')->with('positions', $positions);
     }
 
@@ -91,6 +91,8 @@ class PositionsController extends Controller
      */
     public function destroy($id)
     {
-        //
+		$position = Position::findOrFail($id);
+		$position->update(['is_active' => false]);	
+		return redirect()->route('positions.index');
     }
 }
