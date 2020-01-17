@@ -14,7 +14,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-		$events = Event::simplePaginate(1);
+		$events = Event::simplePaginate(10);
 		return view('events.index')->with('events', $events);
     }
 
@@ -41,11 +41,10 @@ class EventsController extends Controller
 		$event->description = $request->post('description');
 		$event->start_date = $request->post('start_date');
 		$event->end_date = $request->post('end_date');
-		$event->is_active = $request->post('is_active');
+		$event->is_active = $request->has('is_active');
 		$event->save();
 
-		flash('Event created!')->success();
-		return redirect()->route('events.show')->with('event', $event);
+		return redirect()->route('events.index');
     }
 
     /**
@@ -68,7 +67,8 @@ class EventsController extends Controller
      */
     public function edit($id)
     {
-        //
+		$event = Event::findOrFail($id);
+		return view('events.edit')->with('event', $event);
     }
 
     /**
@@ -80,7 +80,13 @@ class EventsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+		$event = Event::findOrFail($id);
+		$event->update([
+		'description' => $request->post('description'),
+		'start_date' => $request->post('start_date'),
+		'end_date' => $request->post('end_date'),
+		'is_active' => $request->has('is_active')]);		
+		return redirect()->route('events.index');
     }
 
     /**
@@ -91,6 +97,7 @@ class EventsController extends Controller
      */
     public function destroy($id)
     {
-        //
+		
+		return redirect()->route('events.index');
     }
 }

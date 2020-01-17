@@ -8,4 +8,8 @@ class Account extends Model
 {
     //
 	protected $table = 't_orm_account';
+	
+	protected $incrementing = false;
+	
+	public $timestamps = false;
 }
