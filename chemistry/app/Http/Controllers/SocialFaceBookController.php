@@ -37,9 +37,13 @@ class SocialFaceBookController extends Controller
 		}
 		else
 		{		
-			$events = Event::where('is_active', 1)->get();	
-			$positions = Position::where('is_active', 1)->get();
-			return view('welcome.step1')->with('events', $events)->with('positions', $positions);
+			$events = Event::where('is_active', 1)->get()->toArray();
+			$eventsKvps = array_column($events, 'description', 'id');
+			
+			$positions = Position::where('is_active', 1)->get()->toArray();
+			$positionsKvps = array_column($positions, 'description', 'id');
+			
+			return view('welcome.step1')->with('events', $eventsKvps)->with('positions', $positionsKvps);
 		}
 	}
 }
