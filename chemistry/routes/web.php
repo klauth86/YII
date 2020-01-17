@@ -13,7 +13,7 @@
 
 Route::resource('events', 'EventsController');
 
-
+Route::resource('positions', 'PositionsController');
 
 Route::get('/', 'WelcomeController@index');
 

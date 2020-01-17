@@ -10,4 +10,6 @@ class Position extends Model
 	protected $table = 't_orm_position';
 	
 	public $timestamps = false;
+	
+	protected $fillable = ['description', 'order'];
 }
