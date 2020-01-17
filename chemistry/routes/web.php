@@ -12,11 +12,11 @@
 */
 
 Route::get('/', 'WelcomeController@index');
+Route::get('/', 'WelcomeController@step1');
+Route::get('/', 'WelcomeController@step2');
+Route::get('/', 'WelcomeController@step3');
 
 Route::resource('events', 'EventsController');
-
 Route::resource('positions', 'PositionsController');
-
-Route::resource('registration', 'RegistrationController');
 
 Auth::routes();
