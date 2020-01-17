@@ -11,10 +11,12 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
-Route::get('/', 'WelcomeController@step1');
-Route::get('/', 'WelcomeController@step2');
-Route::get('/', 'WelcomeController@step3');
+Route::get('/', 'WelcomeController@index')->name('welcome.index');
+
+Route::get('auth/facebook', 'SocialFaceBookController@redirectToProvider')->name('auth.facebook');
+Route::get('auth/facebook/callback', 'SocialGitHubController@handleProviderCallback');
+
+
 
 Route::resource('events', 'EventsController');
 Route::resource('positions', 'PositionsController');

@@ -4,6 +4,6 @@
 
 <h1>Химия</h1>
 
-<a href="{{ route('welcome.step0_GetFacebookAccount') }}">Войти с помощью Facebook</a>
+<a href="{{ route('auth.facebook') }}">Войти с помощью Facebook</a>
 
 @endsection
