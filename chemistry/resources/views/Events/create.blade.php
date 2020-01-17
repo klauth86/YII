@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <h1>Новый EVENT</h1>
 
 <div class="row">

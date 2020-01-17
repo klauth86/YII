@@ -5,8 +5,6 @@
 
 <div class="row">
 
-{{ $login }}
-
 </div>
 
 @endsection
