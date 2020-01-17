@@ -16,6 +16,8 @@ Route::get('/', 'WelcomeController@index')->name('welcome.index');
 Route::get('auth/facebook', 'SocialFaceBookController@redirectToProvider')->name('auth.facebook');
 Route::get('auth/facebook/callback', 'SocialGitHubController@handleProviderCallback');
 
+Route::get('main', 'MainController@index')->name('main.index');
+
 
 
 Route::resource('events', 'EventsController');

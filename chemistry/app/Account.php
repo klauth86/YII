@@ -18,4 +18,9 @@ class Account extends Model
     {
         return $this->hasMany('App\AccountRef', 'facebook_login');
     }
+	
+	public function searchQueries()
+    {
+        return $this->hasMany('App\SearchQuery', 'facebook_login');
+    }
 }

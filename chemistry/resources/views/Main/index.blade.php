@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>YOUR MAIN PAGE</h1>
+<h1>Your main page</h1>
 
 <div class="row">
 
