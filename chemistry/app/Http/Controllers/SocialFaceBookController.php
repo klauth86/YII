@@ -9,7 +9,6 @@ use App\Account;
 use App\SearchQuery;
 use App\Event;
 use App\Position;
-use Session;
 
 class SocialFaceBookController extends Controller
 {
@@ -37,21 +36,8 @@ class SocialFaceBookController extends Controller
 			['name' => $fname, 'patronymic' => $mname, 'surname' => $lname]
 		);
 		
-		Session::put('id', $email);
+		$this->SetSessionData($email);
 
-		if ($account->accountRefs()->count() > 0)
-		{
-			return view('main.index');
-		}
-		else
-		{		
-			$events = Event::where('is_active', 1)->get()->toArray();
-			$eventsKvps = array_column($events, 'description', 'id');
-			
-			$positions = Position::where('is_active', 1)->get()->toArray();
-			$positionsKvps = array_column($positions, 'description', 'id');
-			
-			return view('welcome.step1')->with('events', $eventsKvps)->with('positions', $positionsKvps);
-		}
+		return $this->commonStep1Logic();
 	}
 }
