@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Account;
-use App\Event;
-use App\Position;
 use App\SearchQuery;
 
 class WelcomeController extends Controller
@@ -18,16 +16,16 @@ class WelcomeController extends Controller
 	
 	function step1()
 	{
-		return view('welcome.step1');
+		return $this->ResultBySessionData(view('welcome.step1'));
 	}
 
 	function step2(Request $request)
-	{
-		return view('welcome.step2');
+	{		
+		return $this->ResultBySessionData(view('welcome.step2'));
 	}
 
 	function step3(Request $request)
 	{
-		return view('main.index');
+		return $this->ResultBySessionData(view('main.index'));
 	}		
 }

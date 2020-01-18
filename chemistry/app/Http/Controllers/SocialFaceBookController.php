@@ -9,6 +9,7 @@ use App\Account;
 use App\SearchQuery;
 use App\Event;
 use App\Position;
+use Session;
 
 class SocialFaceBookController extends Controller
 {
@@ -21,6 +22,11 @@ class SocialFaceBookController extends Controller
 	public function handleProviderCallback()
 	{
 		$driver = Socialite::driver('facebook')->fields(['first_name', 'middle_name', 'last_name', 'email']);
+		
+		// handle not registered case
+		// return error view
+		
+		// otherwise go further		
 		return $this->createOrUpdate($user->user['email'], $user->user['first_name'], $user->user['middle_name'], $user->user['last_name']);
 	}
 	
@@ -30,10 +36,12 @@ class SocialFaceBookController extends Controller
 			['facebook_login' => $email],
 			['name' => $fname, 'patronymic' => $mname, 'surname' => $lname]
 		);
+		
+		Session::put('id', $email);
 
 		if ($account->accountRefs()->count() > 0)
 		{
-			return view('main.index');				
+			return view('main.index');
 		}
 		else
 		{		
