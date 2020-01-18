@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Welcome to HackerPair 777</title>
+<title>Welcome to HackerPair</title>
+Welcome to HackerPair, {!! \Session::has('id') ? \Session::get('id') : 'Guest' !!}
 </head>
 <body>
 

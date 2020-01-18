@@ -14,7 +14,7 @@ class SocialFaceBookController extends Controller
 {
 	public function redirectToProvider()
 	{
-		return $this->createOrUpdate('1@1.ru', '1', '2', '3');
+		return $this->createOrUpdate('1@2.ru', '1', '2', '3');
 		//return Socialite::driver('facebook')->redirect();
 	}
 

@@ -18,24 +18,24 @@ class Controller extends BaseController
 	
 	// Login
 	
-	public function HasSessionData()
+	public function HasSessionData($key = 'id')
 	{
-		return Session::has('id');
+		return Session::has($key);
 	}
 	
-	public function GetSessionData()
+	public function GetSessionData($key = 'id')
 	{
-		return Session::get('id');
+		return Session::get($key);
 	}
 	
-	public function SetSessionData($value)
+	public function SetSessionData($value, $key = 'id')
 	{
-		Session::put('id', $value);
+		Session::put($key, $value);
 	}
 	
-	public function ClearSessionData()
+	public function ClearSessionData($key = 'id')
 	{
-		Session::forget('id');
+		Session::forget($key);
 	}	
 	
 	function commonStep1Logic()
@@ -43,8 +43,9 @@ class Controller extends BaseController
 		if ($this->HasSessionData())
 		{
 			$squeries = SearchQuery::where('facebook_login', $this->GetSessionData())->get();
-			if (empty($squeries))
-			{
+			
+			if ($squeries->isEmpty())
+			{		
 				$events = Event::where('is_active', 1)->get()->toArray();
 				$eventsKvps = array_column($events, 'description', 'id');
 				
@@ -52,15 +53,22 @@ class Controller extends BaseController
 				$positionsKvps = array_column($positions, 'description', 'id');
 				
 				return view('welcome.step1')->with('events', $eventsKvps)->with('positions', $positionsKvps);	
-			}
-			
-			return view('welcome.step2');
+			}			
+			return $this->commonStep2Logic();
 		}		
 		return view('welcome.index');
 	}
 	
-	
-	
-	
-	
+	function commonStep2Logic()
+	{
+		if ($this->HasSessionData())
+		{
+			if ($this->HasSessionData('refs'))
+			{
+				return view('main.index');
+			}
+			return view('welcome.step2');
+		}		
+		return view('welcome.index');
+	}	
 }
