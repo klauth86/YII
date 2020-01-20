@@ -16,7 +16,7 @@ class Account extends Model
 	
 	public function accountRefs()
 	{
-		return $this->hasMany('App\AccountRef', 'facebook_login', 'facebook_login');
+		return $this->hasMany('App\AccountRef', 'facebook_login', 'facebook_login')->where('is_active', true);
 	}
 	
 	public function searchQueries()

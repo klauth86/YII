@@ -89,8 +89,17 @@ class Controller extends BaseController
 	
 	public function commonMainSettings()
 	{
-		$account = Account::with('searchQueries')->with('accountRefs')->where('facebook_login', $this->GetSessionData())->first();		
-		return view('main.settings')->with('account', $account);
+		$account = Account::with('searchQueries')->with('accountRefs')->where('facebook_login', $this->GetSessionData())->first();
+
+		$events = Event::where('is_active', 1)->get()->toArray();
+		$eventsKvps = array_column($events, 'description', 'id');
+
+		$positions = Position::where('is_active', 1)->get()->toArray();
+		$positionsKvps = array_column($positions, 'description', 'id');
+
+		$currentSearch = $account->searchQueries->where('is_active', 1)->first();
+
+		return view('main.settings')->with('events', $eventsKvps)->with('positions', $positionsKvps)->with('account', $account)->with('currentSearch', $currentSearch);
 	}
 	
 	public function commonMainAbout()

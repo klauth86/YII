@@ -14,7 +14,7 @@ class CreatePositionsTable extends Migration
     public function up()
     {
         Schema::create('t_orm_position', function (Blueprint $table) {
-            $table->tinyIncrements('id');
+            $table->Increments('id');
 			$table->string('description', 127);
 			$table->unsignedTinyInteger('order')->default(0);
 			$table->boolean('is_active')->default(true);

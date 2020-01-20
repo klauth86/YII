@@ -14,11 +14,11 @@ class CreateAccountRefsTable extends Migration
     public function up()
     {
         Schema::create('t_orm_account_refs', function (Blueprint $table) {
-            $table->string('facebook_login', 127);
+            $table->increments('id');
+			$table->string('facebook_login', 127);
             $table->string('reference', 127);			
 			$table->boolean('is_telegram');
 			$table->boolean('is_active')->default(true);
-			$table->primary(['facebook_login', 'reference']);
 			$table->foreign('facebook_login')->references('facebook_login')->on('t_orm_account');	
         });
     }

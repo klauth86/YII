@@ -27,6 +27,7 @@ class WelcomeController extends Controller
 			$squery->facebook_login = $this->GetSessionData();
 			$squery->self_position_id = $request->post('self_position');
 			$squery->search_position_id = $request->post('search_position');
+			$squery->event_id = $request->post('event');
 			$squery->description = $request->post('description');
 			$squery->save();
 			
@@ -44,7 +45,7 @@ class WelcomeController extends Controller
 				$accountRef = new AccountRef;
 				$accountRef->facebook_login = $this->GetSessionData();
 				$accountRef->reference = $item;
-				$accountRef->is_telegram = $this->IsTelegram($request->post('description'));		
+				$accountRef->is_telegram = $this->IsTelegram($accountRef->reference);		
 				$accountRef->save();				
 			}
 			return $this->commonMainLogic();

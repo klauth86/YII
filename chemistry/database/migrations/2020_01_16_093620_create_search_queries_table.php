@@ -14,16 +14,18 @@ class CreateSearchQueriesTable extends Migration
     public function up()
     {
         Schema::create('t_orm_search_query', function (Blueprint $table) {
+			$table->increments('id');
             $table->string('facebook_login', 127);
-			$table->unsignedTinyInteger('self_position_id');
-			$table->unsignedTinyInteger('search_position_id');
+			$table->unsignedInteger('self_position_id');
+			$table->unsignedInteger('search_position_id');
+			$table->unsignedInteger('event_id');
 			$table->string('description', 127);
 			$table->boolean('is_active')->default(true);
 			
-			$table->primary(['facebook_login', 'self_position_id']);
 			$table->foreign('self_position_id')->references('id')->on('t_orm_position');
 			$table->foreign('search_position_id')->references('id')->on('t_orm_position');
-			$table->foreign('facebook_login')->references('facebook_login')->on('t_orm_account');			
+			$table->foreign('facebook_login')->references('facebook_login')->on('t_orm_account');
+			$table->foreign('event_id')->references('id')->on('t_orm_event');			
         });
     }
 
