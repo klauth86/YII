@@ -11,6 +11,8 @@ use Session;
 use App\SearchQuery;
 use App\Event;
 use App\Position;
+use App\AccountRef;
+use App\Account;
 
 class Controller extends BaseController
 {
@@ -63,11 +65,13 @@ class Controller extends BaseController
 	{
 		if ($this->HasSessionData())
 		{
-			if ($this->HasSessionData('refs'))
+			$refs = AccountRef::where('facebook_login', $this->GetSessionData())->get();
+			
+			if ($refs->isEmpty())
 			{
-				return view('main.index');
+				return view('welcome.step2');
 			}
-			return view('welcome.step2');
+			return $this->commonMainLogic();
 		}		
 		return view('welcome.index');
 	}
@@ -75,5 +79,25 @@ class Controller extends BaseController
 	public function IsTelegram($reference)
 	{
 		return false;
+	}
+	
+	public function commonMainLogic()
+	{
+		$accounts = Account::with('accountRefs')->get();
+		$acc = $accounts[1];
+		$accRefs = $acc->accountRefs()->get();
+		
+		foreach	($acc->accountRefs as $cat)
+		{
+			echo $cat;
+		}
+		
+		$accrefs2 = AccountRef::where('facebook_login', $acc->facebook_login)->get();
+		
+		echo $acc->facebook_login;
+		echo $accRefs;
+		echo $accrefs2;
+		
+		return view('main.index')->with('accounts', $accounts);
 	}
 }

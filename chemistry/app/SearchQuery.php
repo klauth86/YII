@@ -12,18 +12,5 @@ class SearchQuery extends Model
 	
 	public $incrementing = false;
 	
-	public function account()
-    {
-        return $this->belongsTo('App\Account', 'facebook_login');
-    }
-	
-	public function selfPosition()
-    {
-        return $this->belongsTo('App\Account', 'self_position_id');
-    }
-	
-	public function searchPosition()
-    {
-        return $this->belongsTo('App\Account', 'search_position_id');
-    }
+	protected $fillable = ['facebook_login', 'self_position_id', 'search_position_id', 'description', 'is_active'];	
 }

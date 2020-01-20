@@ -29,7 +29,8 @@ class WelcomeController extends Controller
 			$squery->search_position_id = $request->post('search_position');
 			$squery->description = $request->post('description');
 			$squery->save();
-			return view('welcome.step2');
+			
+			return $this->commonStep2Logic();
 		}		
 		return view('welcome.index');
 	}
@@ -38,7 +39,15 @@ class WelcomeController extends Controller
 	{
 		if ($this->HasSessionData())
 		{
-			echo serialize($request->post('name'));
+			foreach($request->post('name') as $item)
+			{
+				$accountRef = new AccountRef;
+				$accountRef->facebook_login = $this->GetSessionData();
+				$accountRef->reference = $item;
+				$accountRef->is_telegram = $this->IsTelegram($request->post('description'));		
+				$accountRef->save();				
+			}
+			return $this->commonMainLogic();
 		}		
 		return view('welcome.index');
 	}		

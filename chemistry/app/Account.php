@@ -13,14 +13,4 @@ class Account extends Model
 	public $incrementing = false;
 
 	protected $fillable = ['facebook_login', 'name', 'patronymic', 'surname', 'description'];	
-	
-	public function accountRefs()
-    {
-        return $this->hasMany('App\AccountRef', 'facebook_login');
-    }
-	
-	public function searchQueries()
-    {
-        return $this->hasMany('App\SearchQuery', 'facebook_login');
-    }
 }

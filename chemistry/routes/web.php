@@ -13,6 +13,9 @@
 
 Route::get('/', 'WelcomeController@index')->name('welcome.index');
 Route::get('step1', 'WelcomeController@step1')->name('welcome.step1');
+Route::get('step2', 'WelcomeController@step1');
+Route::get('step3', 'WelcomeController@step1');
+
 Route::post('step2', 'WelcomeController@step2')->name('welcome.step2');
 Route::post('step3', 'WelcomeController@step3')->name('welcome.step3');
 
@@ -20,8 +23,6 @@ Route::get('auth/facebook', 'SocialFaceBookController@redirectToProvider')->name
 Route::get('auth/facebook/callback', 'SocialGitHubController@handleProviderCallback');
 
 Route::get('main', 'MainController@index')->name('main.index');
-
-
 
 Route::resource('events', 'EventsController');
 Route::resource('positions', 'PositionsController');

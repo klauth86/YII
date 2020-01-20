@@ -11,9 +11,6 @@ class AccountRef extends Model
 	public $timestamps = false;
 
 	public $incrementing = false;
-
-	public function account()
-    {
-        return $this->belongsTo('App\Account', 'facebook_login');
-    }
+	
+	protected $fillable = ['facebook_login', 'reference', 'is_telegram', 'is_active'];	
 }

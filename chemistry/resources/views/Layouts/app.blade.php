@@ -11,12 +11,6 @@ Welcome to HackerPair, {!! \Session::has('id') ? \Session::get('id') : 'Guest' !
 
 @yield('content')
 
-<div>
-@section('advertisement')
-<p>Score some HackerPair swag in our store!</p>
-@show
-</div>
-
 @yield('jscontent')
 
 </body>
