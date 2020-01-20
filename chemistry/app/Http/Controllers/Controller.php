@@ -38,7 +38,7 @@ class Controller extends BaseController
 		Session::forget($key);
 	}	
 	
-	function commonStep1Logic()
+	public function commonStep1Logic()
 	{
 		if ($this->HasSessionData())
 		{
@@ -59,7 +59,7 @@ class Controller extends BaseController
 		return view('welcome.index');
 	}
 	
-	function commonStep2Logic()
+	public function commonStep2Logic()
 	{
 		if ($this->HasSessionData())
 		{
@@ -70,5 +70,10 @@ class Controller extends BaseController
 			return view('welcome.step2');
 		}		
 		return view('welcome.index');
-	}	
+	}
+	
+	public function IsTelegram($reference)
+	{
+		return false;
+	}
 }
