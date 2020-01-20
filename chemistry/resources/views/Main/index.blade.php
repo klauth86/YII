@@ -32,4 +32,6 @@
 </ul>
 </div>
 
+{{ $accounts->links() }}
+
 @endsection

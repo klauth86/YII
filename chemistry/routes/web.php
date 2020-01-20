@@ -23,6 +23,8 @@ Route::get('auth/facebook', 'SocialFaceBookController@redirectToProvider')->name
 Route::get('auth/facebook/callback', 'SocialGitHubController@handleProviderCallback');
 
 Route::get('main', 'MainController@index')->name('main.index');
+Route::get('main/settings', 'MainController@settings')->name('main.settings');
+Route::get('main/about', 'MainController@about')->name('main.about');
 
 Route::resource('events', 'EventsController');
 Route::resource('positions', 'PositionsController');

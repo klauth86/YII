@@ -83,21 +83,19 @@ class Controller extends BaseController
 	
 	public function commonMainLogic()
 	{
-		$accounts = Account::with('accountRefs')->get();
-		$acc = $accounts[1];
-		$accRefs = $acc->accountRefs()->get();
-		
-		foreach	($acc->accountRefs as $cat)
-		{
-			echo $cat;
-		}
-		
-		$accrefs2 = AccountRef::where('facebook_login', $acc->facebook_login)->get();
-		
-		echo $acc->facebook_login;
-		echo $accRefs;
-		echo $accrefs2;
-		
+		$accounts = Account::with('accountRefs')->simplePaginate(1);		
+		return view('main.index')->with('accounts', $accounts);
+	}
+	
+	public function commonMainSettings()
+	{
+		$account = Account::with('searchQueries')->with('accountRefs')->where('facebook_login', $this->GetSessionData())->first();		
+		return view('main.settings')->with('account', $account);
+	}
+	
+	public function commonMainAbout()
+	{
+		$accounts = Account::with('accountRefs')->simplePaginate(1);		
 		return view('main.index')->with('accounts', $accounts);
 	}
 }

@@ -10,4 +10,14 @@ class MainController extends Controller
 	{
 		return $this->commonMainLogic();
 	}
+	
+	public function settings()
+	{
+		return  $this->commonMainSettings();
+	}
+	
+	public function about()
+	{
+		return view('main.about');
+	}
 }
