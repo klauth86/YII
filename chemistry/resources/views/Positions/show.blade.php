@@ -2,11 +2,11 @@
 
 @section('content')
 
-<h1>{{ $position->id }}</h1>
+<h1> Позиция {{ $position->id }}</h1>
 
 <p>
-Description: {{ $position->description }} <br />
-Order: {{ $position->order }}
+Описание: {{ $position->description }} <br />
+Вес: {{ $position->order }}
 </p>
 
 @endsection

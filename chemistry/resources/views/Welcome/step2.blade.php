@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Новый DESCRIPTION</h1>
+<h1>Как с вами связаться</h1>
 
 <div class="row">
 	<div class="col">
@@ -12,12 +12,12 @@
 		<table id="dynamic_table">
 			<tr>
 				<td><input name="name[]" type="text" class="form-control"></input></td>
-				<td><button id="add" type="button" >+</button></td>
+				<td><button id="add" type="button">+</button></td>
 			</tr>
 		</table>	
 		
 		<div class="form-group">
-			{!! Form::submit('Next', ['class' => 'btn btn-info btn-lg', 'style' => 'width: 30%']) !!}
+			{!! Form::submit('Далее', ['class' => 'btn btn-info btn-lg', 'style' => 'width: 30%']) !!}
 		</div>		
 
 		{!! Form::close() !!}

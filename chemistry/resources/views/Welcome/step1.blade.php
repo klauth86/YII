@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Новый SEARCH</h1>
+<h1>Вы ищете ...</h1>
 
 <div class="row">
 	<div class="col">
@@ -10,27 +10,27 @@
 		{!! Form::open(['route' => 'welcome.step2'], ['class' => 'form']) !!}
 
 		<div class="form-group">
-			{!! Form::label('self_position', 'I am',['class' => 'control-label']) !!}
+			{!! Form::label('self_position', 'Я',['class' => 'control-label']) !!}
 			{!! Form::select('self_position', $positions, null) !!}
 		</div>
 
 		<div class="form-group">
-			{!! Form::label('search_position', 'Search for',['class' => 'control-label']) !!}
+			{!! Form::label('search_position', 'Ищу',['class' => 'control-label']) !!}
 			{!! Form::select('search_position', $positions, '2') !!}
 		</div>
 
 		<div class="form-group">
-			{!! Form::label('event', 'Event',['class' => 'control-label']) !!}
+			{!! Form::label('event', 'Событие',['class' => 'control-label']) !!}
 			{!! Form::select('event', $events, null) !!}
 		</div>
 
 		<div class="form-group">
-			{!! Form::label('description', 'Description',['class' => 'control-label']) !!} <br/>
-			{!! Form::textarea('description', null,['class' => 'form-control input-lg','placeholder' => 'A little bit more ...']) !!}
+			{!! Form::label('description', 'Описание',['class' => 'control-label']) !!} <br/>
+			{!! Form::textarea('description', null,['class' => 'form-control input-lg','placeholder' => 'Возможно, вам есть что добавить?']) !!}
 		</div>
 		
 		<div class="form-group">
-			{!! Form::submit('Next', ['class' => 'btn btn-info btn-lg', 'style' => 'width: 100%']) !!}
+			{!! Form::submit('Далее', ['class' => 'btn btn-info btn-lg', 'style' => 'width: 30%']) !!}
 		</div>
 
 		{!! Form::close() !!}

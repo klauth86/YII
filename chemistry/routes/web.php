@@ -15,6 +15,7 @@ Route::get('/', 'WelcomeController@index')->name('welcome.index');
 Route::get('step1', 'WelcomeController@step1')->name('welcome.step1');
 Route::get('step2', 'WelcomeController@step1');
 Route::get('step3', 'WelcomeController@step1');
+Route::get('about', 'WelcomeController@about')->name('welcome.about');
 
 Route::post('step2', 'WelcomeController@step2')->name('welcome.step2');
 Route::post('step3', 'WelcomeController@step3')->name('welcome.step3');

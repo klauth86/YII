@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Your settings</h1>
+<h1>Настройки</h1>
 
 <div> {{ $account->name }} {{ $account->patronymic }} {{ $account->surname }}</div>
 <image width="100px" height="100px" background="red"></image>
 
-<h1>SEARCH</h1>
+<h1>Параметры поиска</h1>
 
 <div class="row">
 	<div class="col">
@@ -14,29 +14,29 @@
 		{!! Form::open(['route' => 'main.updatesearch', 'class' => 'form']) !!}
 
 		<div class="form-group">
-			{!! Form::label('self_position', 'I am',['class' => 'control-label']) !!}
+			{!! Form::label('self_position', 'Я',['class' => 'control-label']) !!}
 			{!! Form::select('self_position', $positions, $currentSearch->self_position_id) !!}
 		</div>
 		
 		{{ Form::hidden('currentSearchQueryId', $currentSearch->id) }}
 
 		<div class="form-group">
-			{!! Form::label('search_position', 'Search for',['class' => 'control-label']) !!}
+			{!! Form::label('search_position', 'Ищу',['class' => 'control-label']) !!}
 			{!! Form::select('search_position', $positions, $currentSearch->search_position_id) !!}
 		</div>
 
 		<div class="form-group">
-			{!! Form::label('event', 'Event',['class' => 'control-label']) !!}
+			{!! Form::label('event', 'Событие',['class' => 'control-label']) !!}
 			{!! Form::select('event', $events, $currentSearch->event_id) !!}
 		</div>
 
 		<div class="form-group">
-			{!! Form::label('description', 'Description',['class' => 'control-label']) !!} <br/>
-			{!! Form::textarea('description', $currentSearch->description,['class' => 'form-control input-lg','placeholder' => 'A little bit more ...']) !!}
+			{!! Form::label('description', 'Описание',['class' => 'control-label']) !!} <br/>
+			{!! Form::textarea('description', $currentSearch->description,['class' => 'form-control input-lg','placeholder' => 'Возможно, вам есть что добавить?']) !!}
 		</div>
 		
 		<div class="form-group">
-			{!! Form::submit('Update', ['class' => 'btn btn-info btn-lg', 'style' => 'width: 30%']) !!}
+			{!! Form::submit('Обновить', ['class' => 'btn btn-info btn-lg', 'style' => 'width: 30%']) !!}
 		</div>
 
 		{!! Form::close() !!}
@@ -67,7 +67,7 @@
 		</table>	
 		
 		<div class="form-group">
-			{!! Form::submit('Update', ['class' => 'btn btn-info btn-lg', 'style' => 'width: 30%']) !!}
+			{!! Form::submit('Обновить', ['class' => 'btn btn-info btn-lg', 'style' => 'width: 30%']) !!}
 		</div>		
 
 		{!! Form::close() !!}

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Events</h1>
+<h1>События</h1>
 
 <div>
 <ul>
@@ -36,7 +36,7 @@
 
 <div>
 {!! Form::open(['route' => ['events.create'], 'method' => 'get']) !!}
-{!! Form::submit('Создать Event', ['class' => 'btn btn-danger']) !!}
+{!! Form::submit('Создать', ['class' => 'btn btn-danger']) !!}
 {!! Form::close() !!}
 </div>
 

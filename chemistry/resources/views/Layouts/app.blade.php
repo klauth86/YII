@@ -3,14 +3,14 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Welcome to HackerPair</title>
+<title>Химия</title>
 
-<div>Welcome to HackerPair, {!! \Session::has('id') ? \Session::get('id') : 'Guest' !!}</div>
+<div>Добро пожаловать на Химию, {!! \Session::has('id') ? \Session::get('id') : 'Гость' !!}</div>
 
 @if (Session::has('id'))
-<a href="{{ route('main.index') }}">Search</a>	
-<a href="{{ route('main.settings') }}">Your settings</a>
-<a href="{{ route('main.about') }}">About</a>
+<a href="{{ route('main.index') }}">Основная</a>	
+<a href="{{ route('main.settings') }}">Настройки</a>
+<a href="{{ route('welcome.about') }}">О приложении</a>
 @endif
 
 </head>

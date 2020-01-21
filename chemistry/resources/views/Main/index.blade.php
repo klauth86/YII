@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Your current search</h1>
+<h1>Результаты по вашему поиску</h1>
 
 <div>
 <ul>
@@ -19,7 +19,7 @@
 <a href="{{ $ref->reference }}">1</a>
 </td>
 @empty
-<td>User leave no references!</td>
+<td>-</td>
 @endforelse
 
 <tr>
@@ -27,7 +27,7 @@
 
 </li>
 @empty
-<li>Nothing found!</li>
+<li>-</li>
 @endforelse
 </ul>
 </div>

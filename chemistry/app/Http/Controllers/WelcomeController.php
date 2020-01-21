@@ -14,6 +14,11 @@ class WelcomeController extends Controller
 		return view('welcome.index');
 	}
 	
+	function about()
+	{
+		return view('welcome.about');
+	}
+	
 	function step1()
 	{
 		return $this->commonStep1Logic();

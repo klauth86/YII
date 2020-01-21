@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Sorry, can not fetch your FB Account Data!</h1>
+<h1>Вы не авторизованы в FB!</h1>
 @endsection

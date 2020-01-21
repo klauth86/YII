@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Positions</h1>
+<h1>Позиции</h1>
 
 <div>
 <ul>
@@ -34,7 +34,7 @@
 
 <div>
 {!! Form::open(['route' => ['positions.create'], 'method' => 'get']) !!}
-{!! Form::submit('Создать Position', ['class' => 'btn btn-danger']) !!}
+{!! Form::submit('Создать', ['class' => 'btn btn-danger']) !!}
 {!! Form::close() !!}
 </div>
 

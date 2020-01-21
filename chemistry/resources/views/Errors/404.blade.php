@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Sorry, the page is not found!</h1>
+<h1>Страница не найдена!</h1>
 @endsection
