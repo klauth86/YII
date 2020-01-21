@@ -11,6 +11,7 @@
 <a href="{{ route('main.index') }}">Основная</a>	
 <a href="{{ route('main.settings') }}">Настройки</a>
 <a href="{{ route('welcome.about') }}">О приложении</a>
+<a href="{{ route('welcome.logout') }}">Выйти</a>
 @endif
 
 </head>

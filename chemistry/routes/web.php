@@ -16,12 +16,13 @@ Route::get('step1', 'WelcomeController@step1')->name('welcome.step1');
 Route::get('step2', 'WelcomeController@step1');
 Route::get('step3', 'WelcomeController@step1');
 Route::get('about', 'WelcomeController@about')->name('welcome.about');
+Route::get('logout', 'WelcomeController@logout')->name('welcome.logout');
 
 Route::post('step2', 'WelcomeController@step2')->name('welcome.step2');
 Route::post('step3', 'WelcomeController@step3')->name('welcome.step3');
 
 Route::get('auth/facebook', 'SocialFaceBookController@redirectToProvider')->name('auth.facebook');
-Route::get('auth/facebook/callback', 'SocialGitHubController@handleProviderCallback');
+Route::get('auth/facebook/callback', 'SocialFaceBookController@handleProviderCallback');
 
 Route::get('main', 'MainController@index')->name('main.index');
 Route::get('main/settings', 'MainController@settings')->name('main.settings');

@@ -19,6 +19,12 @@ class WelcomeController extends Controller
 		return view('welcome.about');
 	}
 	
+	function logout()
+	{
+		$this->ClearSessionData();
+		return view('welcome.index');
+	}
+	
 	function step1()
 	{
 		return $this->commonStep1Logic();

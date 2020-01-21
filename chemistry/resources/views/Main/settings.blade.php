@@ -44,6 +44,8 @@
 	</div>
 </div>
 
+<h1>Контакты</h1>
+
 <div class="row">
 	<div class="col">
 

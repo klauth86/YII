@@ -8,6 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Session;
 
+use Illuminate\Support\Facades\DB;
 use App\SearchQuery;
 use App\Event;
 use App\Position;
@@ -83,7 +84,13 @@ class Controller extends BaseController
 	
 	public function commonMainLogic()
 	{
-		$accounts = Account::with('accountRefs')->simplePaginate(1);		
+		$account = Account::with('searchQueries')->with('accountRefs')->where('facebook_login', $this->GetSessionData())->first();
+		$currentSearch = $account->searchQueries->where('is_active', 1)->first();
+		
+		$fittedLogins = DB::table('t_orm_search_query')->where('is_active', 1)->where('search_position_id', $currentSearch->self_position_id)
+		->where('self_position_id', $currentSearch->search_position_id)->where('event_id', $currentSearch->event_id)->pluck('facebook_login');
+		
+		$accounts = Account::with('accountRefs')->whereIn('facebook_login', $fittedLogins)->simplePaginate(1);		
 		return view('main.index')->with('accounts', $accounts);
 	}
 	
@@ -100,11 +107,5 @@ class Controller extends BaseController
 		$currentSearch = $account->searchQueries->where('is_active', 1)->first();
 
 		return view('main.settings')->with('events', $eventsKvps)->with('positions', $positionsKvps)->with('account', $account)->with('currentSearch', $currentSearch);
-	}
-	
-	public function commonMainAbout()
-	{
-		$accounts = Account::with('accountRefs')->simplePaginate(1);		
-		return view('main.index')->with('accounts', $accounts);
 	}
 }
