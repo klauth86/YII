@@ -1,26 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<title>Химия</title>
-
-<div>Добро пожаловать на Химию, {!! \Session::has('id') ? \Session::get('id') : 'Гость' !!}</div>
-
-@if (Session::has('id'))
-<a href="{{ route('main.index') }}">Основная</a>	
-<a href="{{ route('main.settings') }}">Настройки</a>
-<a href="{{ route('welcome.about') }}">О приложении</a>
-<a href="{{ route('welcome.logout') }}">Выйти</a>
-@endif
-
+    <title>Химия</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Химия">
+    <meta name="keywords" content="химия, соли, телеграм">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/app.css') }}">
 </head>
-
 <body>
 
-@yield('content')
+    <div class="header">
+        <a href="https://chmstr.ru" class="typo header__logo">Химия</a>
+    </div>
 
-@yield('jscontent')
+    @if (Session::has('id'))
+    <div class="nav">
+        <a class="nav__item nav__item_search" href="{{ route('main.index') }}" title="Поиск"></a>
+        <a class="nav__item nav__item_profile" href="{{ route('main.settings') }}"  title="Настройки"></a>
+        <a class="nav__item nav__item_more" href="{{ route('welcome.about') }}"  title="О приложении"></a>
+    </div>
+    @endif
+
+    @yield('content')
+
+    @yield('jscontent')
 
 </body>
 

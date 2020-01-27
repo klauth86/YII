@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Вы не авторизованы в FB!</h1>
+
+<div class="content">
+    <div class="typo typo_h1">С Фейсбуком не срослось :(</div>
+</div>
+
 @endsection

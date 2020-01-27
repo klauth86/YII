@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Страница не найдена!</h1>
+
+<div class="content">
+    <div class="typo typo_h1">На этой странице пусто.</div>
+</div>
+
 @endsection
